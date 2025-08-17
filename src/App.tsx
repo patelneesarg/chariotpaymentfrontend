@@ -14,13 +14,13 @@ function App() {
     const [payments, setPayments] = useState<Payment[]>([]);
     const [total, setTotal] = useState<number>(0);
     const [recipient, setRecipient] = useState("");
-    const [date, setDate] = useState("");
+    const [after, setAfter] = useState("");
 
     const fetchPayments = async () => {
         try {
             const params: any = {};
             if (recipient) params.recipient = recipient;
-            if (date) params.date = date;
+            if (after) params.after = after;
 
             const res = await axios.get("http://localhost:8080/api/payments", { params });
             setPayments(res.data.payments);
@@ -46,10 +46,20 @@ function App() {
                     value={recipient}
                     onChange={(e) => setRecipient(e.target.value)}
                 />
+                <span
+                    style={{
+                        marginLeft: '8px',
+                        fontSize: '0.9em',
+                        color: '#555',
+                        lineHeight: '28px'
+                    }}
+                >
+                    Get payments after
+                </span>
                 <input
                     type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    value={after}
+                    onChange={(e) => setAfter(e.target.value)}
                 />
                 <button onClick={fetchPayments}>Apply Filters</button>
             </div>
