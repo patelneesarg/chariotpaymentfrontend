@@ -30,6 +30,6 @@ The frontend will start on http://localhost:3000
 
 ## Usage
 Payments scheduled within 24 hours are highlighted in the table.
-The frontend allows filtering by recipient and all payments after the scheduled date.
+The frontend allows filtering by recipient and all payments after the date provided.
 
 
